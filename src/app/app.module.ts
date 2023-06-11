@@ -4,12 +4,19 @@ import { AppComponent } from "./app.component";
 import { CommonModule } from "@angular/common";
 import { borderCardDirective } from "./border-card.directive";
 import { PokemonTypeColorPipe } from "./pokemon-pipe-color.pipe";
-import { ListPokemonComponent } from './list-pokemon/list-pokemon.component';
-import { DetailPokemonComponent } from './detail-pokemon/detail-pokemon.component';
+import { ListPokemonComponent } from "./list-pokemon/list-pokemon.component";
+import { DetailPokemonComponent } from "./detail-pokemon/detail-pokemon.component";
+import { AppRoutingModule } from "./app-routing.module";
 
 @NgModule({
-  declarations: [AppComponent, borderCardDirective, PokemonTypeColorPipe, ListPokemonComponent, DetailPokemonComponent],
-  imports: [BrowserModule, CommonModule],
+  declarations: [
+    AppComponent,
+    borderCardDirective,
+    PokemonTypeColorPipe,
+    ListPokemonComponent,
+    DetailPokemonComponent,
+  ],
+  imports: [BrowserModule, CommonModule, AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent],
 })
