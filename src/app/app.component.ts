@@ -1,20 +1,17 @@
 import { Component, OnInit } from "@angular/core";
 import { POKEMONS } from "./mock-pokemon-list";
 import { Pokemon } from "./pokemon";
-import {  borderCardDirective } from "./border-card.directive";
 
 @Component({
   selector: "app-root",
   templateUrl: `app.component.html`,
-  styles:[`
-  h1{
-    text-align:center
-  }
-
-  
-  
-  `] ,
-
+  styles: [
+    `
+      h1 {
+        text-align: center;
+      }
+    `,
+  ],
 })
 export class AppComponent implements OnInit {
   title = "Liste de pokemons";
