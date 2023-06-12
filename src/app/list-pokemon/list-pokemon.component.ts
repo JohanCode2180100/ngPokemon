@@ -9,12 +9,13 @@ import { Router } from "@angular/router";
   styles: [],
 })
 export class ListPokemonComponent {
+
   // on  importe ce morceau de code car nous avons mis notre html du app.component dans list pokemon
   pokemonList: Pokemon[] = POKEMONS;
 
   constructor(private router: Router) {}
 
-  goPokemon(pokemon: Pokemon) {
+  goBack(pokemon: Pokemon) {
     this.router.navigate(["/pokemons", pokemon.id]);
   }
 }
