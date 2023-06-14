@@ -6,8 +6,12 @@ import { borderCardDirective } from "./border-card.directive";
 import { PokemonTypeColorPipe } from "./pokemon-pipe-color.pipe";
 import { RouterModule, Routes } from "@angular/router";
 import { PokemonService } from "./pokemon.service";
+import { FormsModule } from "@angular/forms";
+import { PokemonFormsComponent } from "./pokemon-forms/pokemon-forms.component";
+import { EditPokemonComponent } from "./edit-pokemon/edit-pokemon.component";
 
 const pokemonRoutes: Routes = [
+  { path: "edit/pokemon/:id", component: EditPokemonComponent },
   { path: "pokemons", component: ListPokemonComponent },
   {
     path: "pokemons/:id",
@@ -20,9 +24,11 @@ const pokemonRoutes: Routes = [
     DetailPokemonComponent,
     borderCardDirective,
     PokemonTypeColorPipe,
+    PokemonFormsComponent,
+    EditPokemonComponent,
   ],
   //route fille => forChild
-  imports: [CommonModule, RouterModule.forChild(pokemonRoutes)],
-  providers:[PokemonService]
+  imports: [CommonModule, FormsModule, RouterModule.forChild(pokemonRoutes)],
+  providers: [PokemonService],
 })
 export class PokemonModule {}
