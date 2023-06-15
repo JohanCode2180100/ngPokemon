@@ -14,23 +14,17 @@ export class PokemonService {
   getPokemonList(): Observable<Pokemon[]> {
     return this.http.get<Pokemon[]>("api/pokemons").pipe(
       //tap = clg.log adpate a un observable
-      tap((pokemonList) => console.table(pokemonList)),
+      tap((response) => this.log(response)),
       //intercepter les erreurs
-      catchError((error) => {
-        console.log(error);
-        return of([]);
-      })
+      catchError((error) => this.handleError(error, []))
     );
   }
 
   getPokemonByID(pokemonId: number): Observable<Pokemon | undefined> {
     return this.http.get<Pokemon>(`api/pokemons/${pokemonId}`).pipe(
-      tap((pokemon) => console.table(pokemon)),
+      tap((response) => this.log(response)),
       //intercepter les erreurs
-      catchError((error) => {
-        console.log(error);
-        return of(undefined);
-      })
+      catchError((error) => this.handleError(error, undefined))
     );
   }
 
@@ -48,5 +42,14 @@ export class PokemonService {
       "Combat",
       "Psy",
     ];
+  }
+
+  private log(response: Pokemon[] | Pokemon | undefined) {
+    console.table(response);
+  }
+  private handleError(error: Error, errorValue: any) {
+    console.error(error);
+    //of permet de transformer une donnee simple en un flux de donnee
+    return of(errorValue);
   }
 }
